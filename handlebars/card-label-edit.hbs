@@ -1,0 +1,49 @@
+<div class="pop-window-header">
+  <span href="#" class="close-pop-window"></span>
+  <span href="#" class="pre-pop-window"></span>
+  <span class="pop-window-header-title">Change label</span>
+</div>
+
+<div class="pop-window-content">
+  <h3>Name</h3>
+  <input type="text" class="label-input" value="{{name}}">
+  <h3>Select a color</h3>
+  <span class="label-red label-color-picker">
+    <span class="label-check-icon"></span>
+  </span>
+  <span class="label-green label-color-picker">
+    <span class="label-check-icon"></span>
+  </span>
+  <span class="label-blue label-color-picker">
+    <span class="label-check-icon"></span>
+  </span>
+  <span class="label-orange label-color-picker">
+    <span class="label-check-icon"></span>
+  </span>
+  <span class="label-yellow label-color-picker">
+    <span class="label-check-icon"></span>
+  </span>
+  <span class="label-purple label-color-picker">
+    <span class="label-check-icon"></span>
+  </span>
+  <span class="label-aqua label-color-picker">
+    <span class="label-check-icon"></span>
+  </span>
+  <span class="label-pink label-color-picker">
+    <span class="label-check-icon"></span>
+  </span>
+  <span class="label-lime label-color-picker">
+    <span class="label-check-icon"></span>
+  </span>
+  <span class="label-black label-color-picker">
+    <span class="label-check-icon"></span>
+  </span>
+  <div class="edit-label-controls">
+    {{#if create}}
+    <input type="submit" value="Create" class="submit-button label-create-btn">
+    {{else}}
+    <input type="submit" value="Save" class="submit-button label-submit-btn">
+    <input type="submit" value="Remove" class="submit-button label-remove-btn">
+    {{/if}}
+  </div>
+</div>

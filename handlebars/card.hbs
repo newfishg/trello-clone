@@ -1,0 +1,29 @@
+<a href="/cards/{{id}}">
+  <span class="edit"></span>
+  {{#if labels}}
+  <div class="list-card-labels">
+    {{#each labels}}
+      <span class="card-label label-{{labelConverter this}}"></span>
+    {{/each}}
+  </div>
+  {{/if}}
+  <h3 class="list-card-title">{{title}}</h3>
+  <div class="list-card-badges">
+    {{#if subscribe}}
+      <div class="card-badge badge-subscribe inline-block"></div>
+    {{/if}}
+    {{#if dueDate}}
+      <div class="card-badge badge-future-dueDate inline-block">
+        <span class="inline-block smaller">{{formatDate dueDate}}</span>
+      </div>
+    {{/if}}
+    {{#if description}}
+      <div class="card-badge badge-description inline-block"></div>
+    {{/if}}
+    {{#if comments}}
+      <div class="card-badge badge-comments inline-block">
+        <span class="inline-block smaller">{{comments}}</span>
+      </div>
+    {{/if}}
+  </div>
+</a>

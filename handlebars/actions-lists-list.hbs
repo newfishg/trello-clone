@@ -1,0 +1,8 @@
+<span class="label">List</span>
+<span class="value">{{current.title}}</span>
+<select id="list-selector">
+  <option value="{{current.id}}" selected="selected">{{current.title}} (current)</option>
+  {{#each otherLists}}
+    <option value="{{id}}">{{title}}</option>
+  {{/each}}
+</select>

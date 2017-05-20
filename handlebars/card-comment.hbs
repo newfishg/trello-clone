@@ -1,0 +1,18 @@
+<div class="comment-container">
+  <p class="comment-content">{{content}}</p>
+  <p class="smaller">
+    {{relativeTime time}} 
+    {{#if edited}} 
+      (edited) 
+    {{/if}}
+    -
+     <span class="comment-edit comment-control-btn">Edit</span> 
+    - 
+     <span class="comment-delete comment-control-btn">Delete</span>
+  </p>
+</div>
+<div class="comment-edit-controls">
+  <textarea></textarea>
+  <input type="submit" class="comment-update-btn submit-button" value="Save">
+  <span class="close-composer-btn"></span>
+</div>

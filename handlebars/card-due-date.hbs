@@ -1,0 +1,15 @@
+{{#if dueDate}}
+  <h3>Due Date</h3>
+  {{#if completed}}
+    <span class="edit-card-due is-completed">
+      <input type="checkbox" class="toggle-duedate-completed" name="toggle-due" id="toggle-due" checked>
+      <label for="toggle-due" id="toggle-due-date"></label>
+  {{else}}
+    <span class="edit-card-due">
+      <input type="checkbox" class="toggle-duedate-completed" name="toggle-due" id="toggle-due">
+      <label for="toggle-due" id="toggle-due-date"></label>
+  {{/if}}
+
+    <span class="card-add-due">{{formatDate dueDate}} at {{formatTime dueDate}}</span>
+  </span>
+{{/if}}

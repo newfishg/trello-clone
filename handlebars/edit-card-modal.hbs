@@ -1,0 +1,50 @@
+<a href="/" class="close-edit-modal"></a>
+<div class="card-main inline-block">
+  <div class="card-header">
+    <h2>{{title}}</h2>
+    <p>in list 
+      <span class="card-move"> {{find_card_list_name id}}</span>
+      <span class="subscribe-icon-container {{subsribeStatusLoad subscribe}}"></span>
+    </p>
+  </div>
+  <div class="card-main-content">
+    <div class="card-labels">
+    </div>
+    <div class="card-due-date">
+    </div>
+    <div class="card-description">
+    </div>
+  </div>
+  <div class="card-add-comment">
+    <h2>Add Comment</h2>
+    <form action="post" url="newComment" class="comment-composer">
+      <textarea class="comment-content"></textarea>
+      <input type="submit" value="Send" class="submit-button">
+      <p></p>
+    </form>
+  </div>
+  <div class="card-activities">
+    <h2>Activities</h2>
+    <ul class="comments-container">
+    </ul>
+  </div>
+</div>
+<div class="card-aside inline-block">
+  <div class="card-aside-add">
+    <h2>Add</h2>
+    <span class="card-add-label card-aside-btn">Labels</span>
+    <span class="card-add-due card-aside-btn">Due Date</span>
+  </div>
+  <div class="card-aside-actions">
+    <h2>Actions</h2>
+    <span class="card-move card-aside-btn">Move</span>
+    <span class="card-copy card-aside-btn">Copy</span>
+    <span class="card-subscribe card-aside-btn">
+      Subscribe
+      <span class="card-subscribe-check {{subsribeStatusLoad subscribe}}"></span>
+    </span>
+    <span class="card-archive card-aside-btn">Archive</span>
+  </div>
+</div>
+<div class="pop-window-overlay"></div>
+<div class="pop-window"></div>

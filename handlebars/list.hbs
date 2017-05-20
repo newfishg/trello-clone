@@ -1,0 +1,13 @@
+<h2 class="list-drag-handle">{{title}}</h2>
+<ul class="card-container">
+</ul>
+<div class="card-composer">
+  <form action="newcard" method="post" class="new-card-form">
+    <textarea name="title" class="card-name-input"></textarea>
+    <input type="hidden" class="list-id-identifier" name="listId" value="{{id}}" >
+    <input type="submit" value="Add" class="submit-button">
+    <span class="close-composer-btn exit-card-composer"></span>
+  </form>
+</div>
+
+<a href="#" class="open-card-composer">Add a card...</a>

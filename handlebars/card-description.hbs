@@ -1,0 +1,13 @@
+{{#if description}}
+  <h3 class="inline-block">Description</h3>
+  <span class="edit-card-description">Edit</span>
+  <p class="description-content">{{description}}</p>
+{{else}}
+  <span class="open-description-composer">Edit the description...</span>
+{{/if}}
+
+<div class="description-submit-controls">
+  <textarea></textarea>
+  <input type="submit" class="description-submit-btn submit-button" value="Save">
+  <span class="close-composer-btn"></span>
+</div>

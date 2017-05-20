@@ -1,0 +1,7 @@
+<span class="label">Position</span>
+<span class="value">{{currentPosition}}</span>
+<select id="position-selector">
+  {{#each positions}}
+    <option value="{{position}}">{{isCurrentPosition position cardCurrentPosition listID cardCurrentListID}}</option>
+  {{/each}}
+</select>

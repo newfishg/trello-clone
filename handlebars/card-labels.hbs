@@ -1,0 +1,8 @@
+{{#if labels}}
+  <h3>Labels</h3>
+  <div class="card-labels-container">
+    {{#each labels}}
+      <span class="card-label label-{{labelConverter this}}"></span>
+    {{/each}}
+  <span class="card-label card-label-add"></span>
+{{/if}}

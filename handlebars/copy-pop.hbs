@@ -1,0 +1,37 @@
+<div class="pop-window-header">
+  <span href="#" class="close-pop-window"></span>
+  <span class="pop-window-header-title">Copy Card</span>
+</div>
+<div class="pop-window-content">
+  <h3>Title</h3>
+  <textarea class="copy-card-name-input"></textarea>
+
+  {{#haveLabelsOrComments labels comments}}
+  <h3>Keeps...</h3>
+  {{/haveLabelsOrComments}}
+
+  {{#if labels}}
+  <label class="copy-option-check">
+    <input type="checkbox" name="labels" id="copy-labels-check" checked>Labels <span class="small">({{labelsArrayToCount labels}})</small>
+  </label>
+  {{/if}}
+  {{#if comments}}
+  <label class="copy-option-check">
+    <input type="checkbox" name="comments" id="copy-comments-check" checked>Comments <span class="small">({{comments}})</span>
+  </label>
+  {{/if}}
+
+  <h3>Copy to...</h3>
+  <div class="flex-grid">
+    <div class="button-link list-selector-container threequarter">
+      
+    </div>
+
+    <div class="button-link position-selector-container quarter">
+      
+    </div>
+  </div>
+  
+
+  <span class="submit-button create-submit-btn">Create card</span>
+</div>

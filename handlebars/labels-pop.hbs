@@ -1,0 +1,19 @@
+<div class="pop-window-header">
+  <span href="#" class="close-pop-window"></span>
+  <span class="pop-window-header-title">Labels</span>
+</div>
+<div class="pop-window-content">
+  <input type="text" class="label-input label-search" placeholder="Search labels...">
+  <ul class="edit-card-labels">
+    {{#each labels}}
+      <li class="label-row" data-label-id="{{id}}">
+        <span class="toggle-card-label label-{{labelConverter id}}">
+          {{this.name}}
+          <span class="label-check-icon"></span>
+        </span>
+        <span class="edit-card-label"></span>
+      </li>
+    {{/each}}
+  </ul>
+  <span class="create-new-label">Create a new label</span>
+</div>
