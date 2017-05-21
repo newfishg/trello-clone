@@ -1,0 +1,8 @@
+<ul>
+  {{#each cards}}
+  <li>
+    <a href="/cards/{{this}}">{{cardIDtoName this}}</a>
+    <span> in {{cardIDtoListName this}} on Ruby on rails</span>
+  </li>
+  {{/each}}
+</ul>

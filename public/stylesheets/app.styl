@@ -25,6 +25,12 @@ header
   overflow: hidden
   .header-search
     position: absolute
+    left: 50px
+    .close-modal
+      display: none
+      position: absolute
+      right: 6px
+      top: 6px
     input[type="text"]
       border: none
       border-radius: 3px
@@ -33,6 +39,9 @@ header
       background: rgba(255, 255, 255, .3) url('/images/header-search.png') 100% 3px no-repeat
       &:hover
         background: rgba(255, 255, 255, .4) url('/images/header-search.png') 100% 3px no-repeat
+      &.search-input-extend
+        width: 300px
+        background: #fff
   a.header-logo
       position: absolute
       display: block
@@ -273,7 +282,7 @@ main
   right: 0
   bottom: 0
   left: 0
-  z-index: 3
+  z-index: 10
   content: ""
   background: rgba(0, 0, 0, 0.4)
 
@@ -286,7 +295,7 @@ main
   padding: 10px
   border-radius: 3px
   color: #8c8c8c
-  z-index: 5
+  z-index: 12
   box-sizing: border-box
   background: #edeff0
   h2
@@ -301,6 +310,16 @@ main
     margin: 0 0 10px 0
     text-indent: 40px
     background: transparent url('/images/icon-card-header.png') 0 0 no-repeat
+    textarea
+      display: none
+      width: 493px
+      min-height: 22px
+      padding: 5px 0 0 8px
+      border: none
+      font: bold 18px Helvetica, Arial, sans-serif
+      resize: vertical
+      word-wrap: break-word
+
     .card-move
       text-decoration: underline
       color: #8c8c8c
@@ -740,6 +759,15 @@ main
           background: linear-gradient(to bottom,#CF513D 0,#B04632 100%)
           color: #fff
           box-shadow: 0 1px 0 #4d4d4d
+          
+
+.archive-wrapper
+  p
+    font-weight: bold
+    font-size: 18px
+    color: #000
+    padding: 0 0 20px 0
+  
 
 .comment-edit-controls
   padding: 0 0 10px 0
@@ -822,7 +850,8 @@ main
     -ms-flex: 1
     flex: 1
   
-  select
+  #list-selector,
+  #position-selector
     border: none
     cursor: pointer
     height: 50px
@@ -834,8 +863,29 @@ main
     z-index: 2
     width: 100%
   
-    
-    
+.search-container
+  display: none
+  position: absolute
+  top: 40px
+  left: 50px
+  width: 500px
+  height: 300px
+  padding: 10px
+  border-radius: 3px
+  color: #8c8c8c
+  z-index: 5
+  box-sizing: border-box
+  background: #edeff0
+  overflow: hidden
+  ul
+    font-size: 18px
+    li
+      padding: 10px
+      a
+        text-decoration: underline
+        color: #000
+        cursor: pointer
+
 
 
 .comment-control-btn
@@ -862,8 +912,20 @@ main
   color: #fff
   border: none
   box-sizing: border-box
+  cursor: pointer
   &:hover
     background: linear-gradient(to bottom,#5AAC44 0,#519839 100%)
+
+.delete-submit-btn
+  width: 100%
+  background: linear-gradient(to bottom,#D6DADC 0,#CDD2D4 100%)
+  color: #b04632
+  text-align: center
+  cursor: pointer
+  &:hover
+    background: linear-gradient(to bottom,#CF513D 0,#B04632 100%)
+    color: #fff
+    box-shadow: 0 1px 0 #4d4d4d
 
 .helper-tilt
   -webkit-transform: rotate(3deg)

@@ -3,6 +3,33 @@ var Cards = Backbone.Collection.extend({
   model: Card,
   comparator: 'position',
 
+  updateCardViewFromLabelsEdit: function(labelID) {
+    console.log(labelID);
+    this.each(function(model) {
+      var labels = model.get('labels') || [];
+      console.log(labels);
+      if (labels.includes(labelID)) {
+        model.view.render();
+      }
+    })
+  },
+
+  removeLabelFromCard: function(labelID) {
+    this.each(function(model) {
+      var labels = model.get('labels') || [];
+      if (labels.includes(labelID)) {
+        labels = _.reject(labels, function(id) { return id === labelID });
+
+        model.save({ labels: labels},{
+          success: function() {
+            model.view.render();
+          }
+        });
+      }
+      
+    })
+  },
+
   filterByListID: function(listID) {
     return this.where({ listId: listID });
   },

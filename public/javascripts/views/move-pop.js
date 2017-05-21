@@ -5,6 +5,7 @@ var MovePopView = Backbone.View.extend({
   },
 
   events: {
+    'click .close-pop-window': 'close',
     'change #list-selector': 'setPositionContainer',
     'change #position-selector': 'updatePositionValue',
     'click .move-submit-btn': 'moveCard'

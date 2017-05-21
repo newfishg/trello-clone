@@ -12,4 +12,11 @@ var Comments = Backbone.Collection.extend({
       self.create(newComment, { wait: true });
     })
   },
+
+  deleteCardComments: function(cardID) {
+    var cardComments = this.where({ cardId: cardID });
+    cardComments.forEach(function(model) {
+      model.destroy({ wait: true });
+    });
+  }
 });

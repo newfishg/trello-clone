@@ -22,10 +22,10 @@ var NotificationsView = Backbone.View.extend({
     this.activateBell();
   },
 
-
   render: function() {
     this.$el.html(this.template());
   },
+
   initialize: function() {
     this.render();
   }

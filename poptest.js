@@ -35,3 +35,8 @@ activityLog = {
   type: 'addDue',
   cardID: 2
 };
+
+{"last_id":9,"data":[{"name":"","class":"red","id":1},{"name":"","class":"green","id":2},{"name":"","class":"blue","id":3},{"name":"","class":"pink","id":4},{"name":"Bug","class":"lime","id":5},{"name":"","class":"lime","id":6},{"name":"","class":"red","id":7},{"name":"Black","class":"black","id":8},{"name":"","class":"yellow","id":9}]}
+
+for labelpop
+<input type="text" class="label-input label-search" placeholder="Search labels...">

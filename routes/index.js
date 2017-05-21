@@ -39,6 +39,15 @@ module.exports = function(router) {
     _.extend(current_label, req.body);
     Labels.set(labels);
     res.json(current_label);
+  })
+  .delete(function(req, res) {
+    var labels = _(Labels.get()).reject(function(a) {
+      return a.id === +req.params.id;
+    });
+
+    Labels.update(labels);
+
+    res.json(labels);
   });
 
   router.route("/lists/:id").put(function(req, res) {
@@ -67,6 +76,15 @@ module.exports = function(router) {
     _.extend(current_card, req.body);
     Cards.update(cards);
     res.json(current_card);
+  })
+  .delete(function(req, res) {
+    var cards = _(Cards.get()).reject(function(a) {
+      return a.id === +req.params.id;
+    });
+
+    Cards.update(cards);
+
+    res.json(cards);
   });
 
   router.route("/comments/:id").put(function(req, res) {
@@ -82,7 +100,7 @@ module.exports = function(router) {
       return a.id === +req.params.id;
     });
 
-    Comments.set(comments);
+    Comments.update(comments);
 
     res.status(200).end();
   });

@@ -14,7 +14,6 @@ var CommentView = Backbone.View.extend({
     
     this.model.save({ content: newContent, edited: true});
     this.hideEditComposer();
-    // App.trigger('reloadModalCommentsSection');
   },
 
   hideEditComposer: function() {

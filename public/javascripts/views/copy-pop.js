@@ -5,6 +5,7 @@ var CopyPopView = Backbone.View.extend({
   },
 
   events: {
+    'click .close-pop-window': 'close',
     'change #list-selector': 'setPositionContainer',
     'change #position-selector': 'updatePositionValue',
     'click .create-submit-btn': 'createCard'
@@ -126,7 +127,6 @@ var CopyPopView = Backbone.View.extend({
   loadDefaultTitle: function() {
     this.$('.copy-card-name-input').val(this.model.get('title'));
   },
-  
 
   render: function() {
     this.$el.html(this.template(this.model.toJSON()));

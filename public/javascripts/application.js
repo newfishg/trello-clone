@@ -10,6 +10,7 @@ var App = {
     this.editCardView = new CardEditView({ model: cardModel });
     $('.modal').show();
   },
+
   indexView: function() {
     if (this.editCardView) {
       this.editCardView.remove();
@@ -41,20 +42,33 @@ var App = {
     this.editCardView.loadLabelsPickerView();
   },
 
-  addNewLabel: function(labelData) {
+  addNewLabel: function(labelData, cardID) {
     var self = this;
     App.labels.create(labelData, {
       success: function() {
-        self.updateLabelPopPage();
         self.updateLabelsSection();
+        self.addNewLabelToCard(cardID);
       }
     });
   },
 
+  reRenderCardView: function(cardID) {
+    this.cards.get(cardID).view.render();
+  },
+
   addNewLabelToCard: function(cardID) {
-    var labelsArray = App.cards.get(cardID).get('labels') || [];
-    labelsArray.push(App.labels.length);
-    App.cards.get(cardID).save({ labels: labelsArray });
+    var self = this;
+    var cardModel = this.cards.get(cardID);
+    var labelsArray = cardModel.get('labels') || [];
+    var latestLabelID = _.max(this.labels.pluck('id'));
+
+    labelsArray.push(latestLabelID);
+    cardModel.save({ labels: labelsArray }, {
+      success: function() {
+        self.updateLabelPopPage();
+        self.reRenderCardView(cardID);
+      }
+    });
   },
 
   closeLabelPop: function() {
@@ -95,9 +109,13 @@ var App = {
     this.on('reloadModalDueDateSection', this.updateDueDateSection.bind(this));
     this.on('reloadModalDescriptionSection', this.updateDescriptionSection.bind(this));
     this.on('reloadModalLabelsSection', this.updateLabelsSection.bind(this));
+
     this.on('updateLabelPopWindow', this.updateLabelPopPage.bind(this));
-    this.on('createLabelAndRefreshModalAndPop', this.addNewLabel.bind(this));
+    this.on('labelsEditRefreshCardsView', this.cards.updateCardViewFromLabelsEdit.bind(this.cards));
+    this.on('createLabelRefreshModalAndPopAndAddLabelToCard', this.addNewLabel.bind(this));
     this.on('addLabelToCard', this.addNewLabelToCard.bind(this));
+    this.on('removeLabelFromCard', this.cards.removeLabelFromCard.bind(this.cards));
+
     this.on('closeLabelPop', this.closeLabelPop.bind(this));
     this.on('openLabelPop', this.openLabelPop.bind(this));
     this.on('createComment', this.addComment.bind(this));
@@ -111,6 +129,9 @@ var App = {
     this.on('copyCardComments', this.comments.copyCardComments.bind(this.comments));
 
     this.on('updateNotification', this.notificationsView.appendNotification.bind(this.notificationsView));
+    this.on('deleteCardComments', this.comments.deleteCardComments.bind(this.comments));
+
+    this.on('startSearch', this.searchView.searchCard.bind(this.searchView));
   },
   init: function(lists, cards, labels, comments) {
     this.lists = new Lists(lists);
@@ -121,6 +142,7 @@ var App = {
     this.listsView = new ListsView({ collection: this.lists });
     this.cardsView = new CardsView({ collection: this.cards });
     this.notificationsView = new NotificationsView();
+    this.searchView = new SearchView({ collection: this.cards });
     this.bindEvents();
   }  
 };
@@ -145,7 +167,7 @@ Handlebars.registerHelper('labelConverter', function(labelID) {
   if (!labelID) {
     labelID = App.labels.length;
   }
-  return App.labels.toJSON()[labelID - 1].class
+  return App.labels.findWhere({ id: labelID }).toJSON().class
 });
 
 Handlebars.registerHelper('relativeTime', function(time) {
@@ -180,14 +202,20 @@ Handlebars.registerHelper("idToHref", function(id) {
 });
 
 Handlebars.registerHelper("cardIDtoName", function(id) {
-  return App.cards.where({id: id})[0].toJSON().title;
+  return App.cards.findWhere({id: id}).toJSON().title;
+  // return App.cards.where({id: id})[0].toJSON().title;
 });
 
 
 Handlebars.registerHelper("listIDtoName", function(id) {
-  return App.lists.where({id: id})[0].toJSON().title;
+  return App.lists.findWhere({id: id}).toJSON().title;
 });
 
+Handlebars.registerHelper("cardIDtoListName", function(id) {
+  var listID = App.cards.findWhere({ id: id }).get('listId')
+  return App.lists.findWhere({ id: listID }).get('title');
+  // return App.lists.where({id: id})[0].toJSON().title;
+});
 
 
 

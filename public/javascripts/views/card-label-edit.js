@@ -10,6 +10,22 @@ var EditLabelView = Backbone.View.extend({
     'click .label-color-picker': 'changeColor',
     'click .label-submit-btn': 'updateLabel',
     'click .label-create-btn': 'createLabel',
+    'click .label-remove-btn': 'removeLabel'
+  },
+
+  removeLabel: function(e) {
+    e.preventDefault();
+    var self = this;
+    var labelID = this.model.get('id');
+    App.trigger('removeLabelFromCard', labelID);
+
+    this.model.destroy({
+      success: function() {
+        App.trigger('updateLabelPopWindow');
+        App.trigger('reloadModalLabelsSection');
+        self.closeLabelEditPage();
+      }
+    });
   },
 
   createLabel: function(e) {
@@ -20,8 +36,9 @@ var EditLabelView = Backbone.View.extend({
     data.name = newName;
     data.class = newClass;
 
-    App.trigger('createLabelAndRefreshModalAndPop', data);
-    App.trigger('addLabelToCard', this.cardID);
+
+    App.trigger('createLabelRefreshModalAndPopAndAddLabelToCard', data, this.cardID);
+
     this.closeLabelEditPage();
   },
 
@@ -30,7 +47,12 @@ var EditLabelView = Backbone.View.extend({
     var newClass = this.findLabelClass();
     var newName = this.$('.label-input').val();
     
-    this.model.save({ class: newClass, name: newName });
+    this.model.save({ class: newClass, name: newName }, {
+      success: function(model) {
+        var labelID = model.get('id');
+        App.trigger('labelsEditRefreshCardsView', labelID);
+      }
+    });
     App.trigger('updateLabelPopWindow');
     App.trigger('reloadModalLabelsSection');
     this.closeLabelEditPage();
@@ -80,5 +102,4 @@ var EditLabelView = Backbone.View.extend({
   initialize: function(options) {
     this.cardID = options.cardID;
   }
-
 });

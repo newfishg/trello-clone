@@ -13,7 +13,40 @@ var CardEditView = Backbone.View.extend({
     'submit .comment-composer': 'createComment',
     'click .card-copy': 'loadCardCopyView',
     'click .card-move': 'loadCardMoveView',
-    'click .card-subscribe': 'cardSubsribe'
+    'click .card-subscribe': 'cardSubsribe',
+    'click .card-archive': 'cardArchive',
+    'click .open-title-input': 'openTitleComposer',
+    'blur .card-title-input': 'updateCardTitle'
+  },
+
+  updateCardTitle: function(e) {
+    var newTitle = $(e.target).val();
+    $(e.target).hide();
+    this.$('.open-title-input').show();
+    if (this.model.get('title') !== newTitle) {
+      this.model.save({ title: newTitle}, {
+        success: function() {
+          this.$('.open-title-input').text(newTitle);
+        }
+      });
+    }
+  },
+
+  openTitleComposer: function(e) {
+    var title = $(e.target).text();
+    $(e.target).hide();
+    this.$('.card-title-input').show();
+    this.$('.card-title-input').val(title);
+    this.$('.card-title-input').focus();
+  },
+
+  cardArchive: function(e) {
+    var positionObject = $(e.target).position();
+    this.showPopWindow(positionObject);
+    
+    this.archiveView = new ArchivePopView({ 
+      model: this.model
+    });
   },
 
   cardSubsribe: function() {
@@ -26,13 +59,11 @@ var CardEditView = Backbone.View.extend({
   },
 
   loadCardMoveView(e) {
-
     var positionObject = $(e.target).position();
     this.showPopWindow(positionObject);
 
     this.movePopView = new MovePopView({ 
       model: this.model,
-      listID: this.model.get('listId')
     });
   },
 
@@ -42,7 +73,6 @@ var CardEditView = Backbone.View.extend({
 
     this.copyPopView = new CopyPopView({ 
       model: this.model,
-      listID: this.model.get('listId')
     });
   },
 
@@ -81,7 +111,6 @@ var CardEditView = Backbone.View.extend({
 
 
   showPopWindow: function(position) {
-
     this.$popWindow.show();
     this.$popOverlay.show();
 
@@ -118,7 +147,6 @@ var CardEditView = Backbone.View.extend({
     }
   },
 
-  // Call from App, refresh due date section after save or remove dueDate in model
   refreshDueDate: function() {
     this.dueDateSectionView.render();
   },
@@ -176,7 +204,5 @@ var CardEditView = Backbone.View.extend({
     this.descriptionSectionView = new CardDescriptionView({ model: this.model });
     this.labelsSectionView = new CardLabelsView({ model: this.model });
     this.commentsSectionView = new CardCommentsView({ collection: App.comments, cardID: this.model.get('id') });
-
-    // this.loadSubscribeButton();
   }
 });

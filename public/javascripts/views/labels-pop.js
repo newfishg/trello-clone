@@ -71,6 +71,5 @@ var LabelsPopView = Backbone.View.extend({
   },
 
   initialize: function() {
-    
   }
 });

@@ -1,8 +1,4 @@
 var CardsView = Backbone.View.extend({
-  appendNewCard: function() {
-    // for create new card
-  },
-
   renderCard: function(card) {
     var cardView = new CardView({
       model: card
@@ -11,7 +7,6 @@ var CardsView = Backbone.View.extend({
     // find corresponding list ul and append it
     var $cardContainer = this.findMatchCardContainer(cardView);
     $cardContainer.append(cardView.el);
-
   },
 
   findMatchCardContainer: function(cardView) {

@@ -12,7 +12,7 @@ html
     +javascript_include_tag('application')
     +javascript_include_tag('models/list', 'models/card', 'models/label', 'models/comment')
     +javascript_include_tag('collections/lists', 'collections/cards', 'collections/labels', 'collections/comments')
-    +javascript_include_tag('views/index', 'views/list', 'views/lists','views/newlist', 'views/card', 'views/cards', 'views/edit-modal', 'views/due-date-pop', 'views/card-duedate', 'views/card-description', 'views/card-labels', 'views/labels-pop', 'views/card-label-edit', 'views/card-comments', 'views/card-comment', 'views/move-pop', 'views/copy-pop' ,'views/notifications', 'views/notification')
+    +javascript_include_tag('views/index', 'views/list', 'views/lists','views/newlist', 'views/card', 'views/cards', 'views/edit-modal', 'views/due-date-pop', 'views/card-duedate', 'views/card-description', 'views/card-labels', 'views/labels-pop', 'views/card-label-edit', 'views/card-comments', 'views/card-comment', 'views/move-pop', 'views/copy-pop' ,'views/notifications', 'views/notification', 'views/archive-pop', 'views/search')
     script(type="text/javascript").
       App.init(!{JSON.stringify(lists)}, !{JSON.stringify(cards)}, !{JSON.stringify(labels)}, !{JSON.stringify(comments)})
     +javascript_include_tag('router')

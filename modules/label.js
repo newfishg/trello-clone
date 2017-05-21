@@ -15,6 +15,14 @@ module.exports = {
     return this.__readFile().data;
   },
 
+  update: function(data) {
+    data.id = this.getLastID();
+    fs.writeFileSync(file_path, JSON.stringify({
+      last_id: data.id,
+      data: data
+    }), 'utf8');
+  },
+
   set: function(data) {
     data.id = this.getLastID() + 1;
 

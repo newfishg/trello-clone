@@ -1,6 +1,5 @@
 var NotificationView = Backbone.View.extend({
   tagName: 'li',
-  // template: App.templates.notification,
 
   render: function() {
     var activityType = this.activityLog.type;

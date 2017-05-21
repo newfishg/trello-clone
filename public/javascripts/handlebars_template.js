@@ -40,6 +40,10 @@ this["JST"]["actions-position-list"] = Handlebars.template({"1":function(contain
     + "</select>";
 },"useData":true});
 
+this["JST"]["archive-pop"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    return "<div class=\"pop-window-header\"><span href=\"#\" class=\"close-pop-window\"></span><span class=\"pop-window-header-title\">Delete card</span></div><div class=\"pop-window-content\"><p>Click this button will remove this card. This action is no undo.</p><span class=\"submit-button delete-submit-btn\">Delete</span></div>";
+},"useData":true});
+
 this["JST"]["card-comment"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
     return " (edited) ";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
@@ -193,9 +197,9 @@ this["JST"]["due-date-pop"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"ma
 this["JST"]["edit-card-modal"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3=container.escapeExpression;
 
-  return "<a href=\"/\" class=\"close-edit-modal\"></a><div class=\"card-main inline-block\"><div class=\"card-header\"><h2>"
+  return "<a href=\"/\" class=\"close-edit-modal\"></a><div class=\"card-main inline-block\"><div class=\"card-header\"><h2 class=\"open-title-input\">"
     + alias3(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias2),(typeof helper === "function" ? helper.call(alias1,{"name":"title","hash":{},"data":data}) : helper)))
-    + "</h2><p>in list <span class=\"card-move\"> "
+    + "</h2><textarea class=\"card-title-input\"></textarea><p>in list <span class=\"card-move\"> "
     + alias3((helpers.find_card_list_name || (depth0 && depth0.find_card_list_name) || alias2).call(alias1,(depth0 != null ? depth0.id : depth0),{"name":"find_card_list_name","hash":{},"data":data}))
     + "</span><span class=\"subscribe-icon-container "
     + alias3((helpers.subsribeStatusLoad || (depth0 && depth0.subsribeStatusLoad) || alias2).call(alias1,(depth0 != null ? depth0.subscribe : depth0),{"name":"subsribeStatusLoad","hash":{},"data":data}))
@@ -205,7 +209,7 @@ this["JST"]["edit-card-modal"] = Handlebars.template({"compiler":[7,">= 4.0.0"],
 },"useData":true});
 
 this["JST"]["index"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<header><div class=\"header-search\"><input type='text'></div><a class=\"header-logo\" href=\"/\"></a><div class=\"header-notification\"><span class=\"icon-bell open-notification-btn\"></span></div></header><main><div class=\"subscribe-activity\"></div><div class=\"board-header\"><a class=\"board-header-btn\"><span class=\"board-header-btn-text board-header-btn-name\">Ruby on rails</span></a><div class=\"board-header-btns\"><a class=\"board-header-btn board-header-star\" href=\"#\"><span class=\"board-header-btn icon-star\"></a><a class=\"board-header-btn\" href=\"#\"><span class=\"board-header-btn icon-lock\"></span><span class=\"board-header-btn-text\">Private</span></a></div></div><div class=\"lists-container\"></div></main><div id=\"modal-overlay\" class=\"modal\"><div class=\"modal edit-modal-container\"></div></div>";
+    return "<header><div class=\"header-search\"><input type=\"text\" name=\"search\" class=\"search-card-input\"><span class=\"close-modal close-search-modal\"></span></div><a class=\"header-logo\" href=\"/\"></a><div class=\"header-notification\"><span class=\"icon-bell open-notification-btn\"></span></div></header><main><div class=\"subscribe-activity\"></div><div class=\"board-header\"><a class=\"board-header-btn\"><span class=\"board-header-btn-text board-header-btn-name\">Ruby on rails</span></a><div class=\"board-header-btns\"><a class=\"board-header-btn board-header-star\" href=\"#\"><span class=\"board-header-btn icon-star\"></a><a class=\"board-header-btn\" href=\"#\"><span class=\"board-header-btn icon-lock\"></span><span class=\"board-header-btn-text\">Private</span></a></div></div><div class=\"lists-container\"></div></main><div id=\"modal-overlay\" class=\"modal\"><div class=\"modal edit-modal-container\"></div></div><div class=\"search-modal search-container\"></div>";
 },"useData":true});
 
 this["JST"]["labels-pop"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
@@ -221,7 +225,7 @@ this["JST"]["labels-pop"] = Handlebars.template({"1":function(container,depth0,h
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1;
 
-  return "<div class=\"pop-window-header\"><span href=\"#\" class=\"close-pop-window\"></span><span class=\"pop-window-header-title\">Labels</span></div><div class=\"pop-window-content\"><input type=\"text\" class=\"label-input label-search\" placeholder=\"Search labels...\"><ul class=\"edit-card-labels\">"
+  return "<div class=\"pop-window-header\"><span href=\"#\" class=\"close-pop-window\"></span><span class=\"pop-window-header-title\">Labels</span></div><div class=\"pop-window-content\"><ul class=\"edit-card-labels\">"
     + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.labels : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "</ul><span class=\"create-new-label\">Create a new label</span></div>";
 },"useData":true});
@@ -267,8 +271,10 @@ this["JST"]["notification-add-due"] = Handlebars.template({"compiler":[7,">= 4.0
 },"useData":true});
 
 this["JST"]["notification-archive"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "User archived "
-    + container.escapeExpression((helpers.cardIDtoName || (depth0 && depth0.cardIDtoName) || helpers.helperMissing).call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.cardID : depth0),{"name":"cardIDtoName","hash":{},"data":data}));
+    var helper;
+
+  return "User archived "
+    + container.escapeExpression(((helper = (helper = helpers.cardName || (depth0 != null ? depth0.cardName : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"cardName","hash":{},"data":data}) : helper)));
 },"useData":true});
 
 this["JST"]["notification-change-due"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
@@ -321,4 +327,22 @@ this["JST"]["notification-unknown"] = Handlebars.template({"compiler":[7,">= 4.0
 
 this["JST"]["notifications"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<div class=\"notification-header\"><h3>Notifications</h3><span class=\"close-modal\"></span></div><div class=\"notification-wrapper\"><ul class=\"notifications-container\"></ul></div>";
+},"useData":true});
+
+this["JST"]["search"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
+    var alias1=container.escapeExpression, alias2=depth0 != null ? depth0 : {}, alias3=helpers.helperMissing;
+
+  return "<li><a href=\"/cards/"
+    + alias1(container.lambda(depth0, depth0))
+    + "\">"
+    + alias1((helpers.cardIDtoName || (depth0 && depth0.cardIDtoName) || alias3).call(alias2,depth0,{"name":"cardIDtoName","hash":{},"data":data}))
+    + "</a><span> in "
+    + alias1((helpers.cardIDtoListName || (depth0 && depth0.cardIDtoListName) || alias3).call(alias2,depth0,{"name":"cardIDtoListName","hash":{},"data":data}))
+    + " on Ruby on rails</span></li>";
+},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1;
+
+  return "<ul>"
+    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.cards : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "</ul>";
 },"useData":true});

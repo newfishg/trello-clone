@@ -23,8 +23,6 @@ var ListsView = Backbone.View.extend({
       this.listComposerReset();
       this.closeListComposer();
     }
-
-    
   },
   notEmptyListName: function() {
     return this.$('.new-list-form').find('input[type="text"]').val() !== '';
