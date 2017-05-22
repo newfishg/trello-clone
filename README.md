@@ -28,8 +28,8 @@ The page link is localhost:3000
 
 ### Front-end
 
-* Backbone: Manage Model, colleciton, views and routes to minimize page reloads
-* jQuery: DOM manipulation and user interaction
-* moment.js: manage date displayed
-* jQuery-ui: drag function and datepicker plugin
-* handlebars: HTML template used with Backbone views
+* `Backbone`: Manage Model, colleciton, views and routes to minimize page reloads
+* `jQuery`: DOM manipulation and user interaction
+* `moment.js`: manage date displayed
+* `jQuery-ui`: drag function and datepicker plugin
+* `handlebars`: HTML template used with Backbone views
