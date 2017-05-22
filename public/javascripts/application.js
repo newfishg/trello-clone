@@ -203,7 +203,6 @@ Handlebars.registerHelper("idToHref", function(id) {
 
 Handlebars.registerHelper("cardIDtoName", function(id) {
   return App.cards.findWhere({id: id}).toJSON().title;
-  // return App.cards.where({id: id})[0].toJSON().title;
 });
 
 
@@ -214,7 +213,6 @@ Handlebars.registerHelper("listIDtoName", function(id) {
 Handlebars.registerHelper("cardIDtoListName", function(id) {
   var listID = App.cards.findWhere({ id: id }).get('listId')
   return App.lists.findWhere({ id: listID }).get('title');
-  // return App.lists.where({id: id})[0].toJSON().title;
 });
 
 

@@ -1,4 +1,21 @@
 @import url("whitespace_reset.css");
+textarea {
+  padding: 10px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  resize: none;
+}
+textarea:focus {
+  outline: none;
+}
+h3 {
+  font-weight: normal;
+}
+input[type="submit"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
 .inline-block {
   display: inline-block;
   vertical-align: top;
@@ -63,22 +80,51 @@
   background: transparent url("/images/icon-exit-composer.png") 0 0 no-repeat;
   background-size: 24px 24px;
 }
-textarea:focus {
-  outline: none;
+.comment-control-btn {
+  cursor: pointer;
+  color: #00f;
+  text-decoration: underline;
 }
-input[type="submit"] {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+.close-composer-btn {
+  margin: 5px 0 0 5px;
+  display: inline-block;
+  vertical-align: top;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  background: transparent url("/images/icon-exit-composer.png") 0 0 no-repeat;
 }
-textarea {
-  padding: 10px;
-  border-radius: 3px;
+.submit-button {
+  display: inline-block;
+  padding: 8px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 14px;
+  background: linear-gradient(to bottom, #61bd4f 0, #5aac44 100%);
+  color: #fff;
+  border: none;
   box-sizing: border-box;
-  resize: none;
+  cursor: pointer;
 }
-h3 {
-  font-weight: normal;
+.submit-button:hover {
+  background: linear-gradient(to bottom, #5aac44 0, #519839 100%);
+}
+.delete-submit-btn {
+  width: 100%;
+  background: linear-gradient(to bottom, #d6dadc 0, #cdd2d4 100%);
+  color: #b04632;
+  text-align: center;
+  cursor: pointer;
+}
+.delete-submit-btn:hover {
+  background: linear-gradient(to bottom, #cf513d 0, #b04632 100%);
+  color: #fff;
+  box-shadow: 0 1px 0 #4d4d4d;
+}
+.helper-tilt {
+  -webkit-transform: rotate(3deg);
+  -moz-transform: rotate(3deg);
+  transform: rotate(3deg);
 }
 body {
   font: normal 14px Helvetica, Arial, sans-serif;
@@ -1089,6 +1135,10 @@ main .new-list .list-name-input:focus {
   background: #edeff0;
   overflow: hidden;
 }
+.search-container p {
+  font-size: 18px;
+  color: #000;
+}
 .search-container ul {
   font-size: 18px;
 }
@@ -1099,50 +1149,4 @@ main .new-list .list-name-input:focus {
   text-decoration: underline;
   color: #000;
   cursor: pointer;
-}
-.comment-control-btn {
-  cursor: pointer;
-  color: #00f;
-  text-decoration: underline;
-}
-.close-composer-btn {
-  margin: 5px 0 0 5px;
-  display: inline-block;
-  vertical-align: top;
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
-  background: transparent url("/images/icon-exit-composer.png") 0 0 no-repeat;
-}
-.submit-button {
-  display: inline-block;
-  padding: 8px 20px;
-  border-radius: 5px;
-  font-weight: bold;
-  font-size: 14px;
-  background: linear-gradient(to bottom, #61bd4f 0, #5aac44 100%);
-  color: #fff;
-  border: none;
-  box-sizing: border-box;
-  cursor: pointer;
-}
-.submit-button:hover {
-  background: linear-gradient(to bottom, #5aac44 0, #519839 100%);
-}
-.delete-submit-btn {
-  width: 100%;
-  background: linear-gradient(to bottom, #d6dadc 0, #cdd2d4 100%);
-  color: #b04632;
-  text-align: center;
-  cursor: pointer;
-}
-.delete-submit-btn:hover {
-  background: linear-gradient(to bottom, #cf513d 0, #b04632 100%);
-  color: #fff;
-  box-shadow: 0 1px 0 #4d4d4d;
-}
-.helper-tilt {
-  -webkit-transform: rotate(3deg);
-  -moz-transform: rotate(3deg);
-  transform: rotate(3deg);
 }

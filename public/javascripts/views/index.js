@@ -8,6 +8,7 @@ var IndexView = Backbone.View.extend({
     'click .search-card-input': 'showSearchModal',
     'click .close-search-modal': 'closeSearchModal',
     'keyup input[name="search"]': 'searchCard',
+    'blur input[name="search"]': 'closeSearchModal'
   },
 
   searchCard: function(e) {

@@ -4,6 +4,12 @@ var SearchView = Backbone.View.extend({
 
   searchCard: function(query) {
     var matchCardArray = [];
+
+    if (query.length <= 1) {
+      this.$el.html('<p>More than 2 characters to start the search</p>');
+      return;
+    }
+
     this.collection.each(function(card) {
 
       var title = card.get('title') || '';
