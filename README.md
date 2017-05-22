@@ -17,3 +17,19 @@ The page link is localhost:3000
 * `Card search function`: search the card title and description match the query
 * `Notifications`: If a card is subscribed, the actions performed on the card will show in the notifications(Add duedate, change duedate, add comments, move or copy card)
 
+# Stack
+
+### Back-end
+
+* `node`, `express`: server and router
+* `jade(now pug)`, `stylus`: pre-processor for html and CSS
+* `json`: file type to persist the data
+* `bower`, `grunt`: construct all vendor file dependencies and file minification
+
+### Front-end
+
+* Backbone: Manage Model, colleciton, views and routes to minimize page reloads
+* jQuery: DOM manipulation and user interaction
+* moment.js: manage date displayed
+* jQuery-ui: drag function and datepicker plugin
+* handlebars: HTML template used with Backbone views
