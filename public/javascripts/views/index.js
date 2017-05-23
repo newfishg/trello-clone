@@ -37,6 +37,9 @@ var IndexView = Backbone.View.extend({
     if ($('.header-notification').hasClass('bell-active')) {
       $('.header-notification').removeClass('bell-active');
     }
+
+    // prevent bubble to body click event
+    return false;
   },
 
   closeModalByOverlay: function(e) {

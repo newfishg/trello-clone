@@ -3,7 +3,12 @@ var NotificationsView = Backbone.View.extend({
   template: App.templates.notifications,
 
   events: {
-    'click .close-modal': 'closeWindow'
+    'click': 'clicked',
+    'click .close-modal': 'closeWindow',
+  },
+
+  clicked: function() {
+    return false;
   },
 
   closeWindow: function() {
@@ -27,6 +32,7 @@ var NotificationsView = Backbone.View.extend({
   },
 
   initialize: function() {
+    $('body').on('click', this.closeWindow.bind(this));
     this.render();
   }
 });
