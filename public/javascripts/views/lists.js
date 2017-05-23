@@ -3,7 +3,13 @@ var ListsView = Backbone.View.extend({
   events: {
     'click .open-list-composer': 'openListComposer',
     'click .exit-list-composer': 'closeListComposer',
-    'submit .new-list-form': 'createNewlist'
+    'submit .new-list-form': 'createNewlist',
+    'click .list-composer': 'clicked'
+  },
+
+  clicked: function() {
+    // prevent bubble event when click on composer
+    return false;
   },
 
   createNewlist: function(e) {
@@ -40,6 +46,8 @@ var ListsView = Backbone.View.extend({
     $(e.target).hide();
     this.$('.list-composer').show();
     this.$('.list-name-input').focus();
+
+    return false;
   },
 
   render: function() {
@@ -94,6 +102,7 @@ var ListsView = Backbone.View.extend({
     this.render();
     this.listSortable();
     this.listenTo(this.collection, 'add', this.renderNewList);
+    $('body').on('click', this.closeListComposer.bind(this));
   }
 
 });
