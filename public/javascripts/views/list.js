@@ -4,10 +4,17 @@ var ListView = Backbone.View.extend({
     class: 'list-card'
   },
   events: {
+    'click .card-composer': 'clicked',
     'click .open-card-composer': 'openCardComposer',
     'click .exit-card-composer': 'closeCardComposer',
     'submit': 'createNewCard',
   },
+
+  clicked: function() {
+    // when click in composer, prevent bubble to body
+    return false;
+  },
+
   createNewCard: function(e) {
     e.preventDefault();
     var $f = this.$('.new-card-form');
@@ -38,6 +45,8 @@ var ListView = Backbone.View.extend({
     e.preventDefault();
     $(e.target).hide();
     $(e.target).closest('div').find('.card-composer').show();
+
+    return false
   },
   closeCardComposer: function() {
     this.$('.open-card-composer').show(0)
@@ -79,6 +88,7 @@ var ListView = Backbone.View.extend({
     this.$('.list-id-identifer').val(id);
   },
   initialize: function() {
+    $('body').on('click', this.closeCardComposer.bind(this));
     this.render();
     this.cardSortable();
     this.model.view = this;
