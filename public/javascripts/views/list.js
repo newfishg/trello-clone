@@ -77,7 +77,7 @@ var ListView = Backbone.View.extend({
           App.trigger('updateListID', cardId, listId);
         }
 
-        App.trigger('updateCardsPosition', cardPositionArray);
+        App.trigger('updateCardsPosition', cardPositionArray, listId);
       }
     });
   },

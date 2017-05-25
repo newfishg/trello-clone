@@ -2,6 +2,33 @@ var SearchView = Backbone.View.extend({
   el: '.search-container',
   template: App.templates.search,
 
+  events: {
+    'click': 'clicked',
+  },
+
+  clicked: function(e) {
+    if ($(e.target).prop('tagName') === 'A') {
+      var link = $(e.target).attr('href');
+      router.navigate(link, { trigger: true });
+    }
+
+    return false
+  },
+
+  closeSearch: function(e) {
+    if ($(e.target).attr('class')) {
+      if ($(e.target).attr('class').includes('search-card-input') || $(e.target).attr('class').includes('search-modal')) {
+        
+      } else {
+        this.$el.hide();
+      }
+    } else {
+      this.$el.hide();
+    }
+    
+    // this.$el.hide();
+  },
+
   searchCard: function(query) {
     var matchCardArray = [];
 
@@ -29,6 +56,6 @@ var SearchView = Backbone.View.extend({
   },
 
   initialize: function() {
-
+    $('body').on('click', this.closeSearch.bind(this));
   }
 });

@@ -7,8 +7,10 @@ var NotificationsView = Backbone.View.extend({
     'click .close-modal': 'closeWindow',
   },
 
-  clicked: function() {
-    return false;
+  clicked: function(e) {
+    if ($(e.target).prop('tagName') !== 'A') {
+      return false
+    }
   },
 
   closeWindow: function() {
