@@ -67,6 +67,7 @@ var App = {
       success: function() {
         self.updateLabelPopPage();
         self.reRenderCardView(cardID);
+        self.updateLabelsSection();
       }
     });
   },
